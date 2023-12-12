@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewAccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,14 @@ Route::view('/wealthmgt/trust-service', 'pages.wealth.trust-service')->name('tru
 Route::view('/wealthmgt/estate-planning', 'pages.wealth.estate-planning')->name('estate-planning');
 Route::view('/wealthmgt/financial-planning', 'pages.wealth.financial-planning')->name('financial-planning');
 
+
+Route::get('signup/personal-info', [NewAccountController::class, 'personalInfo'])->name('personalInfo');
+Route::post('signup/personal-info', [NewAccountController::class, 'storeAccountInfo'])->name('storeAccountInfo');
+Route::get('account/setup/xd{id}3et64', [NewAccountController::class, 'accountSetup'])->name('accountSetup');
+Route::post('account/setup/', [NewAccountController::class, 'storeAccountSetup'])->name('storeAccountSetup');
+Route::get('account/terms-and-conditions/xd{id}3et64', [NewAccountController::class, 'terms'])->name('terms');
+Route::get('account/review/xd{id}3et64', [NewAccountController::class, 'accountReview'])->name('accountReview');
+Route::get('submit/details/xd{id}3et64', [NewAccountController::class, 'submitDetails'])->name('submitDetails');
 
 //Route::view('/','pages.index')->name('index');
 Route::view('/contact-us','pages.contact-us')->name('contact');

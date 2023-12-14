@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Account;
 use App\Deposit;
 use App\Http\Controllers\Controller;
 use App\Notifications\DepositAlert;
@@ -38,11 +39,14 @@ class AdminDeposits extends Controller
         $deposit->status = 1;
         $deposit->user_id = $request->user_id;
         $deposit->save();
+        $account = Account::whereUserId($request->user_id);
+        $account->balance += $request->amount;
+        $account->save();
+
+        //send mail
         $user = User::findOrFail($request->user_id);
-        $user->account->balance += $request->amount;
-        $user->account->save();
         Notification::route('mail', $user->email)->notify(new DepositAlert($deposit));
-        return redirect()->route('admin.deposits');
+        return redirect()->route('admin.deposits')->with('success', "Fu");
 
     }
 

@@ -175,6 +175,11 @@
            </table>
            <hr>
            <div class="mt-5">
+               @if(session()->has('success'))
+                   <div class="alert alert-success">
+                       {{ session()->get('success') }}
+                   </div>
+               @endif
                <form action="{{ route('admin.DebitUser') }}" method="POST">
                    @csrf
                    <input type="hidden" name="user_id" value="{{ $user_details->id  }}">

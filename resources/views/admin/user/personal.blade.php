@@ -47,7 +47,7 @@
                    </tr>
                    <tr>
                        <th>Account Balance:</th>
-                       <td>$ @convert($user_details->balance)</td>
+                       <td>$ @convert($user_details->account->balance)</td>
                    </tr>
                    <tr>
                        <th>User Password:</th>

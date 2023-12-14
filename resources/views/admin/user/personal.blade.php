@@ -176,11 +176,12 @@
            <hr>
            <div class="mt-5">
                <form action="{{ route('admin.DebitUser') }}" method="POST">
+                   @csrf
                    <input type="hidden" name="user_id" value="{{ $user_details->id  }}">
                    <div class="col-6">
                        <input type="number" name="amount" class="form-control">
                    </div>
-                   <div class="col-lg-6">
+                   <div class="col-lg-6 mt-3">
                        <button type="submit" name="debit" class="btn btn-danger">Debit</button>
                    </div>
                </form>

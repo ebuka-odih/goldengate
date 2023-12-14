@@ -24,9 +24,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'a
     Route::delete('user/{id}/delete', 'Admin\UserController@delete_user')->name('delete.user');
     Route::get('approve/user/{id}', "Admin\UserController@approveUser")->name('approveUser');
     Route::get('suspend/user/{id}', "Admin\UserController@suspend_user")->name('suspendUser');
+    Route::post('debit/user', "Admin\UserController@DebitUser")->name('DebitUser');
     //  End of User Route
 
-    
+
     //  Transfer Route
     Route::get('nsb-transfer', 'Admin\AdminTransactions@nsbTransfer')->name('nsbTransfer');
     Route::get('nsb-transfer/details/{id}', 'Admin\AdminTransactions@nsbTransferDetails')->name('nsbTransferDetails');

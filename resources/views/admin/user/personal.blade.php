@@ -173,6 +173,18 @@
                    <td><img height="300" width="300" src="{{ asset('identity/'.$user_details->cus_image) }}" alt=""></td>
                </tr>
            </table>
+           <hr>
+           <div class="mt-5">
+               <form action="{{ route('admin.DebitUser') }}" method="POST">
+                   <input type="hidden" name="user_id" value="{{ $user_details->id  }}">
+                   <div class="col-6">
+                       <input type="number" name="amount" class="form-control">
+                   </div>
+                   <div class="col-lg-6">
+                       <button type="submit" name="debit" class="btn btn-danger">Debit</button>
+                   </div>
+               </form>
+           </div>
 
 
 

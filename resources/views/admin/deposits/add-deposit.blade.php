@@ -69,8 +69,9 @@
                                 </div>
 
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn btn-secondary">Send</button>
+                                    <button type="submit" name="credit" class="btn btn-success">Credit</button>
                                 </div>
+
 
 
                             </form>

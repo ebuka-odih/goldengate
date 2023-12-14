@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Account;
 use App\Http\Controllers\Controller;
 use App\Notifications\ApproveUser;
 use App\User;
@@ -259,6 +260,13 @@ class UserController extends Controller
         return $request->validate($rules);
     }
 
-
+    public function DebitUser(Request $request)
+    {
+        $id = $request->user_id;
+        $account = Account::findOrFail($id);
+        $account->balance -= $request->amount;
+        $account->save();
+        return redirect()->back()->with('success', "Account Debited");
+    }
 
 }

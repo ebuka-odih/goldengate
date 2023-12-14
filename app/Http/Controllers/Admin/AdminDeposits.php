@@ -39,7 +39,7 @@ class AdminDeposits extends Controller
         $deposit->status = 1;
         $deposit->user_id = $request->user_id;
         $deposit->save();
-        $account = Account::whereUserId($request->user_id);
+        $account = Account::whereUserId($request->user_id)->get();
         $account->balance += $request->amount;
         $account->save();
 
